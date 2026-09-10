@@ -1,0 +1,405 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro - Meu Catálogo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #e8f0ea;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 320px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 8px 10px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Título */
+        h1 {
+            margin: 0 0 31px;
+            text-align: center;
+            font-size: 50px;
+            line-height: 1;
+            font-weight: bold;
+        }
+
+        /* Formulário */
+        form {
+            width: 100%;
+        }
+
+        .campo {
+            width: 100%;
+            height: 46px;
+            margin-bottom: 27px;
+            padding: 0 10px;
+
+            border: none;
+            outline: none;
+
+            background: #45e985;
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.35);
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .campo::placeholder {
+            color: #000;
+            opacity: 1;
+        }
+
+        .campo:focus {
+            box-shadow:
+                0 0 0 2px #21b85e,
+                0 3px 4px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Tipo de cliente */
+        .tipo {
+            margin-top: -5px;
+            margin-bottom: 27px;
+        }
+
+        .tipo-titulo {
+            height: 46px;
+            padding: 9px 5px;
+
+            background: #45e985;
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.35);
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .opcoes {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .opcao {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .opcao input {
+            appearance: none;
+            width: 26px;
+            height: 20px;
+            margin: 0;
+
+            background: #d9d9d9;
+            border: none;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .opcao input:checked {
+            background: #3150ff;
+            position: relative;
+        }
+
+        .opcao input:checked::after {
+            content: "✓";
+            display: block;
+            color: white;
+            font-size: 17px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        /* Botão */
+        .btn {
+            width: 100%;
+            height: 46px;
+            margin-top: 48px;
+
+            border: none;
+            background: #2944f3;
+            color: white;
+
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.35);
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 25px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .btn:hover {
+            background: #1d38df;
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Mensagem */
+        #mensagem {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+
+            background: #fff;
+            border-left: 5px solid #2944f3;
+
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        /* Rodapé */
+        .rodape {
+            margin-top: auto;
+            padding-top: 50px;
+
+            text-align: center;
+
+            font-family: "Brush Script MT", "Segoe Script", cursive;
+            font-size: 27px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 350px) {
+            .container {
+                max-width: 100%;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            h1 {
+                font-size: 44px;
+            }
+
+            .opcoes {
+                gap: 8px;
+            }
+
+            .opcao {
+                font-size: 18px;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>Cadastro</h1>
+
+        <form id="cadastroForm">
+
+            <!-- E-mail -->
+            <input
+                class="campo"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail:"
+                required
+            >
+
+            <!-- Nome -->
+            <input
+                class="campo"
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Nome:"
+                required
+            >
+
+            <!-- Telefone -->
+            <input
+                class="campo"
+                type="tel"
+                id="telefone"
+                name="telefone"
+                placeholder="Telefone:"
+                required
+            >
+
+            <!-- Tipo de cliente -->
+            <div class="tipo">
+
+                <div class="tipo-titulo">
+                    Tipo de cliente:
+                </div>
+
+                <div class="opcoes">
+
+                    <label class="opcao">
+                        <input
+                            type="radio"
+                            name="tipoCliente"
+                            value="Cliente"
+                            required
+                        >
+                        <span>Cliente</span>
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="radio"
+                            name="tipoCliente"
+                            value="Fornecedor"
+                        >
+                        <span>Fornecedor</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Senha -->
+            <input
+                class="campo"
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Senha:"
+                minlength="6"
+                required
+            >
+
+            <!-- Botão -->
+            <button class="btn" type="submit">
+                Concluir cadastro
+            </button>
+
+            <div id="mensagem"></div>
+
+        </form>
+
+        <footer class="rodape">
+            Meu Catálogo
+        </footer>
+
+    </main>
+
+    <script>
+        const formulario = document.getElementById("cadastroForm");
+        const mensagem = document.getElementById("mensagem");
+
+        formulario.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const nome = document.getElementById("nome").value.trim();
+            const telefone = document.getElementById("telefone").value.trim();
+            const senha = document.getElementById("senha").value;
+
+            const tipoSelecionado =
+                document.querySelector(
+                    'input[name="tipoCliente"]:checked'
+                );
+
+            // Validação
+            if (!email || !nome || !telefone || !senha || !tipoSelecionado) {
+                mostrarMensagem(
+                    "Preencha todos os campos.",
+                    "#d93025"
+                );
+                return;
+            }
+
+            if (senha.length < 6) {
+                mostrarMensagem(
+                    "A senha deve ter pelo menos 6 caracteres.",
+                    "#d93025"
+                );
+                return;
+            }
+
+            // Dados do cadastro
+            const cadastro = {
+                email: email,
+                nome: nome,
+                telefone: telefone,
+                tipo: tipoSelecionado.value
+            };
+
+            /*
+             * Salva os dados no navegador.
+             * Em uma aplicação real, aqui seria feita uma requisição
+             * para o backend/banco de dados.
+             */
+            localStorage.setItem(
+                "cadastroUsuario",
+                JSON.stringify(cadastro)
+            );
+
+            mostrarMensagem(
+                `Cadastro concluído com sucesso! Bem-vindo(a), ${nome}.`,
+                "#16833b"
+            );
+
+            formulario.reset();
+        });
+
+
+        function mostrarMensagem(texto, cor) {
+            mensagem.textContent = texto;
+            mensagem.style.display = "block";
+            mensagem.style.borderLeftColor = cor;
+        }
+
+
+        // Máscara simples para telefone
+        document
+            .getElementById("telefone")
+            .addEventListener("input", function() {
+
+                let valor = this.value.replace(/\D/g, "");
+
+                if (valor.length > 11) {
+                    valor = valor.substring(0, 11);
+                }
+
+                if (valor.length <= 10) {
+                    valor = valor.replace(
+                        /^(\d{2})(\d{4})(\d{0,4}).*/,
+                        "($1) $2-$3"
+                    );
+                } else {
+                    valor = valor.replace(
+                        /^(\d{2})(\d{5})(\d{0,4}).*/,
+                        "($1) $2-$3"
+                    );
+                }
+
+                this.value = valor;
+            });
+    </script>
+
+</body>
+</html>
