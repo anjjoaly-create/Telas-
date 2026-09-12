@@ -15,11 +15,8 @@
         body {
             margin: 0;
             min-height: 100vh;
-
             background-color: #b8f5d3;
-
             font-family: Georgia, "Times New Roman", serif;
-
             display: flex;
             justify-content: center;
         }
@@ -27,7 +24,6 @@
         .container {
             width: 100%;
             max-width: 320px;
-
             padding: 0 20px 30px;
         }
 
@@ -35,33 +31,23 @@
         .imagem-topo {
             width: 203px;
             height: 154px;
-
             object-fit: cover;
-
             display: block;
-
             margin: 0 auto 18px;
         }
 
         /* TÍTULO */
         h1 {
             margin: 0 0 10px;
-
             text-align: center;
-
-            font-family: "Brush Script MT",
-                         "Segoe Script",
-                         cursive;
-
+            font-family: "Brush Script MT", "Segoe Script", cursive;
             font-size: 31px;
             font-weight: normal;
         }
 
         .subtitulo {
             margin: 0 0 60px;
-
             text-align: center;
-
             font-size: 20px;
             font-weight: bold;
         }
@@ -70,24 +56,14 @@
         .campo {
             width: 100%;
             height: 45px;
-
             margin-bottom: 21px;
-
             padding: 0 7px;
-
             border: none;
-
             background-color: #f3b7ee;
-
             box-shadow: 0 3px 4px rgba(0, 0, 0, 0.28);
-
-            font-family: Georgia,
-                         "Times New Roman",
-                         serif;
-
+            font-family: Georgia, "Times New Roman", serif;
             font-size: 18px;
             font-weight: bold;
-
             outline: none;
         }
 
@@ -103,43 +79,27 @@
         /* BOTÕES */
         button {
             width: 100%;
-
             border: none;
-
             cursor: pointer;
-
             box-shadow: 0 3px 4px rgba(0, 0, 0, 0.28);
-
-            font-family: Georgia,
-                         "Times New Roman",
-                         serif;
-
+            font-family: Georgia, "Times New Roman", serif;
             font-weight: bold;
         }
 
         .btn-cadastro {
             height: 46px;
-
-            margin-bottom: 82px;
-
+            margin-bottom: 20px;
             background-color: #c7199e;
-
             color: #000;
-
             text-align: left;
-
             padding-left: 7px;
-
             font-size: 18px;
         }
 
         .btn-entrar {
             height: 45px;
-
             background-color: #2942ed;
-
             color: #fff;
-
             font-size: 25px;
         }
 
@@ -154,12 +114,9 @@
         /* MENSAGEM */
         #mensagem {
             text-align: center;
-
             font-family: Arial, sans-serif;
-
             font-size: 13px;
             font-weight: bold;
-
             margin-bottom: 10px;
         }
 
@@ -188,7 +145,7 @@
         <h1>Meu Catálogo</h1>
 
         <p class="subtitulo">
-            Encontre o que você precisa
+            Encontre o que você procura!
         </p>
 
         <!-- LOGIN -->
@@ -235,7 +192,6 @@
 
     </main>
 
-
     <script>
 
         /* =========================
@@ -243,9 +199,7 @@
         ========================= */
 
         function abrirCadastro() {
-
             window.location.href = "cadastro.html";
-
         }
 
 
@@ -259,15 +213,13 @@
 
                 event.preventDefault();
 
-                const email =
-                    document
+                const email = document
                     .getElementById("email")
                     .value
                     .trim()
                     .toLowerCase();
 
-                const senha =
-                    document
+                const senha = document
                     .getElementById("senha")
                     .value;
 
@@ -276,17 +228,12 @@
 
 
                 /* Busca o usuário cadastrado */
-
-                const usuario =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "usuarioMeuCatalogo"
-                        )
-                    );
+                const usuario = JSON.parse(
+                    localStorage.getItem("usuarioMeuCatalogo")
+                );
 
 
                 /* Verifica se existe cadastro */
-
                 if (!usuario) {
 
                     mensagem.textContent =
@@ -298,8 +245,7 @@
                 }
 
 
-                /* Verifica login */
-
+                /* Verifica o login */
                 if (
                     email === usuario.email &&
                     senha === usuario.senha
@@ -310,21 +256,13 @@
 
                     mensagem.className = "sucesso";
 
-                    /*
-                    Aqui você poderá mandar
-                    o usuário para a tela
-                    principal do catálogo.
-
-                    Exemplo:
-
-                    window.location.href =
-                        "catalogo.html";
-                    */
+                    // Redireciona para o catálogo
+                    // window.location.href = "catalogo.html";
 
                 } else {
 
                     mensagem.textContent =
-                        "E-mail ou senha incorretos.";
+                        "E-mail ou senha incorreta.";
 
                     mensagem.className = "erro";
 
@@ -335,5 +273,4 @@
     </script>
 
 </body>
-
 </html>
